@@ -1,6 +1,6 @@
 # Filament Menu Manager
 
-![Menu Manager Page](./screenshots/plugin.png)
+![Menu Manager Page](https://raw.githubusercontent.com/ysfkaya/filament-menu-manager-docs/main/screenshots/plugin.png)
 
 ## Introduction
 
@@ -34,44 +34,44 @@ Managing menus might be challenging, but with this plugin, you will be able to d
 
 The menu manager page lists menu items based on location. The menu panels you add are also displayed here.
 
-![Light Page](./screenshots/light.png)
-![Dark Page](./screenshots/dark.png)
+![Light Page](https://raw.githubusercontent.com/ysfkaya/filament-menu-manager-docs/main/screenshots/light.png)
+![Dark Page](https://raw.githubusercontent.com/ysfkaya/filament-menu-manager-docs/main/screenshots/dark.png)
 
 #### Location Selector
 
 You can add any locations you like and create items. Changing the default location is possible.
 
-![Location Selector](./screenshots/location-selector.png)
+![Location Selector](https://raw.githubusercontent.com/ysfkaya/filament-menu-manager-docs/main/screenshots/location-selector.png)
 
 #### Custom Link Panel
 
 You can add any `link` you want as an item using this panel.
 
-![Adding Custom Link](./screenshots/custom-link.png)
+![Adding Custom Link](https://raw.githubusercontent.com/ysfkaya/filament-menu-manager-docs/main/screenshots/custom-link.png)
 
 #### Fixed Link Panel
 
 Using this panel, you can add the `fixed links` you specify as items.
 
-![Adding Fixed Link](./screenshots/fixed-link.png)
+![Adding Fixed Link](https://raw.githubusercontent.com/ysfkaya/filament-menu-manager-docs/main/screenshots/fixed-link.png)
 
 #### Model Panel
 
 Using this panel, you can show the models you set to use menu items as a panel. The example below shows the `Product` model as the menu is set to be available.
 
-![Adding Model Link](./screenshots/model-panel.png)
+![Adding Model Link](https://raw.githubusercontent.com/ysfkaya/filament-menu-manager-docs/main/screenshots/model-panel.png)
 
 #### Quick Edit
 
-![Quick Save](./screenshots/quick-edit.png)
+![Quick Save](https://raw.githubusercontent.com/ysfkaya/filament-menu-manager-docs/main/screenshots/quick-edit.png)
 
 #### Drag and Drop
 
-![Drag and Drop](./screenshots/drag-drop.gif)
+![Drag and Drop](https://raw.githubusercontent.com/ysfkaya/filament-menu-manager-docs/main/screenshots/drag-drop.gif)
 
 #### Reordering with Buttons
 
-![Reorder with Buttons](./screenshots/reorder.gif)
+![Reorder with Buttons](https://raw.githubusercontent.com/ysfkaya/filament-menu-manager-docs/main/screenshots/reorder.gif)
 
 ## Installation
 
@@ -119,7 +119,7 @@ Password: [license-key]
 Your username will be your email address and the password will is your license key, followed by a colon (:), followed by the domain you are activating. For example, let's say we have the following email and license activation:
 
 - Contact email: **email@gmail.com**
-- License key: **8b8da5f8-a2a1-11ee-8f4b-0242ac120002**
+- License key: **8c21df8f-6273-4932-b4ba-8bcc723ef500**
 - Activation fingerprint: **fingerprint**
 
 You will need to enter the above information as follows when prompted for your credentials:
@@ -128,7 +128,7 @@ You will need to enter the above information as follows when prompted for your c
 Loading composer repositories with package information
 Authentication required (filament-menu-manager.composer.sh):
 Username: my_email@gmail.com
-Password: 8b8da5f8-a2a1-11ee-8f4b-0242ac120002:my_domain.com
+Password: 8c21df8f-6273-4932-b4ba-8bcc723ef500:my_domain.com
 ```
 
 The license key and fingerprint should be separated by a colon (:).
@@ -230,7 +230,7 @@ Since `header` location is set by default, when you first visit the plugin page,
 
 > Note: If the default location is not set, the first location you add will be used by default.
 
-![Added Locations](./screenshots/293588459-177bb5eb-3468-477b-888b-1fb596e6e41f.png)
+![Added Locations](https://raw.githubusercontent.com/ysfkaya/filament-menu-manager-docs/main/screenshots/293588459-177bb5eb-3468-477b-888b-1fb596e6e41f.png)
 
 #### Configure Location Depth
 
@@ -294,7 +294,7 @@ public function panel(Panel $panel): Panel
 }
 ```
 
-![Custom Menu Panel](./screenshots/custom-menu-panel.png)
+![Custom Menu Panel](https://raw.githubusercontent.com/ysfkaya/filament-menu-manager-docs/main/screenshots/custom-menu-panel.png)
 
 #### ModelMenuPanel
 
@@ -379,7 +379,7 @@ class Post extends Model implements HasMenu
 }
 ```
 
-![Model Panels](./screenshots/model-menu-panel.png)
+![Model Panels](https://raw.githubusercontent.com/ysfkaya/filament-menu-manager-docs/main/screenshots/model-menu-panel.png)
 
 The `ModelMenuPanel` class automatically discovers all your models with the `App\Models` namespace in the `app/Models` path. If you want to add a 3rd party model to this panel, you can directly call the `addModel` function. You can also use the `discoverModelsIn` method to automatically save your models if they are in a different location.
 
@@ -440,7 +440,7 @@ public function panel(Panel $panel): Panel
 }
 ```
 
-![Fixed Menu Panel](./screenshots/fixed-menu-panel.png)
+![Fixed Menu Panel](https://raw.githubusercontent.com/ysfkaya/filament-menu-manager-docs/main/screenshots/fixed-menu-panel.png)
 
 #### Creating Your Own Menu Panel
 
@@ -608,7 +608,7 @@ public function panel(Panel $panel): Panel
 }
 ```
 
-![New Default Form Components](./screenshots/default-form-components.png)
+![New Default Form Components](https://raw.githubusercontent.com/ysfkaya/filament-menu-manager-docs/main/screenshots/default-form-components.png)
 
 > This plugin has some fixture data columns in the database table.
 
