@@ -875,3 +875,15 @@ public function panel(Panel $panel): Panel
         ])
 }
 ```
+
+## Rendering Navigation
+
+## Caching
+
+## Extending `MenuRepository` class
+
+## Extending `MenuRenderer` class
+
+## Support
+
+If you have a question, bug or feature request, please e-mail me at filamentmenumanager@gmail.com or join us #menu-manager on Discord. I'd love to hear from you.
