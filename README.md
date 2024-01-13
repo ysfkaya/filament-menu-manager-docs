@@ -895,13 +895,180 @@ Menu rendering will currently be shown through Laravel's Blade template engine. 
 
 This example is based on a layout prepared on TailwindCSS. You can implement this example with reference to your own template using the structure you want.
 
+#### Plugin Config
+
+```php
+use Ysfkaya\Menu\MenuPlugin;
+
+public function panel(Panel $panel): Panel
+{
+    return $panel
+        ->default()
+        ->plugins([
+            MenuPlugin::make()
+                ->addLocation(name: 'header', label: 'Header', depth: 2)
+                ->addLocation(name: 'footer', label: 'Footer', depth: 2)
+                ->formComponentsLocationFor('header', [
+                    Forms\Components\FileUpload::make('icon')->label('Icon')->image()
+                ])
+        ])
+}
+```
+
+#### Layout
+
 ```blade
 {{-- views/components/layouts/app.blade.php --}}
 
+<!DOCTYPE html>
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+    <head>
+        <meta charset="utf-8" />
 
+        <meta name="application-name" content="{{ config('app.name') }}" />
+        <meta name="csrf-token" content="{{ csrf_token() }}" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+        <title>{{ config('app.name') }}</title>
+
+        <style>
+            [x-cloak] {
+                display: none !important;
+            }
+        </style>
+
+        @vite(['resources/css/app.css', 'resources/css/app.js'])
+    </head>
+
+    <body class="antialiased">
+        @menu('header', 'components.layouts.header')
+
+        {{ $slot }}
+
+        @menu('footer', 'components.layouts.footer')
+    </body>
+</html>
 ```
 
+#### Header
+
+```blade
+{{-- views/components/layouts/header.blade.php --}}
+
+<nav class="bg-white border-gray-200 dark:bg-gray-900">
+    <div class="flex flex-wrap items-center justify-between max-w-screen-xl mx-auto p-4">
+        <a href="#" class="flex items-center space-x-3 rtl:space-x-reverse">
+            <img src="logo-url" class="h-8" />
+            <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">Brand Name</span>
+        </a>
+        <div class="flex items-center md:order-2 space-x-1 md:space-x-2 rtl:space-x-reverse">
+            <a href="#" class="text-gray-800 dark:text-white hover:bg-gray-50 focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-4 py-2 md:px-5 md:py-2.5 dark:hover:bg-gray-700 focus:outline-none dark:focus:ring-gray-800">Login</a>
+            <a href="#" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 md:px-5 md:py-2.5 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">Sign up</a>
+            <button data-collapse-toggle="mega-menu-icons" type="button" class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600" aria-controls="mega-menu-icons" aria-expanded="false">
+                <span class="sr-only">Open main menu</span>
+                <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14">
+                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 1h15M1 7h15M1 13h15"/>
+                </svg>
+            </button>
+        </div>
+        <div id="mega-menu-icons" class="items-center justify-between hidden w-full md:flex md:w-auto md:order-1">
+            <ul class="flex flex-col mt-4 font-medium md:flex-row md:mt-0 md:space-x-8 rtl:space-x-reverse">
+                @foreach ($tree as $item)
+
+                    @if (! $item->hasChildren())
+                        <li>
+                            <a href="{{ $item->url }}" target="{{ $item->target }}" class="block py-2 px-3 text-blue-600 border-b border-gray-100 hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-blue-600 md:p-0 dark:text-blue-500 md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-blue-500 md:dark:hover:bg-transparent dark:border-gray-700" aria-current="page">
+                                {{ $item->title }}
+                            </a>
+                        </li>
+                    @else
+                        <li>
+                            <button id="mega-menu-icons-dropdown-button" data-dropdown-toggle="mega-menu-icons-dropdown" class="flex items-center justify-between w-full py-2 px-3 font-medium text-gray-900 border-b border-gray-100 md:w-auto hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-blue-600 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-blue-500 md:dark:hover:bg-transparent dark:border-gray-700">
+                                {{ $item->title }}
+                                <svg class="w-2.5 h-2.5 ms-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+                                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/>
+                                </svg>
+                            </button>
+                            <div id="mega-menu-icons-dropdown" class="absolute z-10 grid hidden w-auto grid-cols-2 text-sm bg-white border border-gray-100 rounded-lg shadow-md dark:border-gray-700 md:grid-cols-3 dark:bg-gray-700">
+                                @foreach ($item->children->chunk(4) as $children)
+                                    <div class="p-4 pb-0 text-gray-900 md:pb-4 dark:text-white">
+                                        <ul class="space-y-4" aria-labelledby="mega-menu-icons-dropdown-button">
+                                            @foreach ($children as $childItem)
+                                                <li>
+                                                    <a href="{{ $childItem->url }}" target="{{ $childItem->target }}" class="flex items-center text-gray-500 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-500 group">
+                                                        @if ($childItem->icon)
+                                                            <img src="{{ Storage::url($item->icon) }}" class="w-4 h-4 me-2" />
+                                                        @endif
+
+                                                        {{ $childItem->title }}
+                                                    </a>
+                                                </li>
+                                            @endforeach
+                                        </ul>
+                                    </div>
+                                @endforeach
+                            </div>
+                        </li>
+                    @endif
+
+                @endforeach
+            </ul>
+        </div>
+    </div>
+</nav>
+```
+
+#### Footer
+
+```blade
+{{-- views/components/layouts/footer.blade.php --}}
+
+<footer class="bg-white dark:bg-gray-900">
+    <div class="mx-auto w-full max-w-screen-xl">
+      <div class="grid grid-cols-2 gap-8 px-4 py-6 lg:py-8 md:grid-cols-4">
+        @foreach ($tree as $item)
+            <div>
+                <h2 class="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">
+                    {{ $item->title }}
+                </h2>
+                <ul class="text-gray-500 dark:text-gray-400 font-medium">
+                    @foreach ($item->children as $childItem)
+                        <li class="mb-4">
+                            <a href="{{ $childItem->url }}" target="{{ $childItem->target }}" class="hover:underline">
+                                {{ $childItem->title }}
+                            </a>
+                        </li>
+                    @endforeach
+                </ul>
+            </div>
+        @endforeach
+    </div>
+</footer>
+```
+
+#### Advanced Rendering
+
+The menu tree items in each menu directive return the `Ysfkaya\Menu\Data\Link` object. This object contains some methods that will help you during rendering.
+
+In the example above, the `icon` parameter in the `header` section comes from the `data` column in the menu table. Each custom form component you add is registered in this column and the `Link` object renders it dynamically
+
+In the light of this information, you can perform your menu rendering operations for your needs.
+
 ## Caching
+
+To enable caching, first publish the plugin's config file in your project.
+
+```php
+php artisan vendor:publish --tag="filament-menu-manager-config"
+```
+
+You can then set the `enabled` parameter you see in the config file to `true`. 
+
+> If you wish, you can set `MENU_CACHE_ENABLED=true` only in the `.env` file.
+
+After these instructions, Laravel's cache mechanism will work automatically when your menus are used on the frontend side.
+
+> The cache will be cleared with every menu update.
 
 ## Support
 
