@@ -171,11 +171,11 @@ The license key and fingerprint should be separated by a colon (:).
 
 4. Publish Config (Optional)
 
-    If you want to change the default settings of the plugin, you can publish the config file.
+   If you want to change the default settings of the plugin, you can publish the config file.
 
-    ```bash
-    php artisan vendor:publish --tag="filament-menu-manager-config"
-    ```
+   ```bash
+   php artisan vendor:publish --tag="filament-menu-manager-config"
+   ```
 
 5. Publish Assets
 
@@ -782,9 +782,9 @@ public function panel(Panel $panel): Panel
 }
 ```
 
-Daha fazla aksiyon türünü incelemek için `ActionType` enum'unu inceleyebilirsiniz. 
+For more action types, see the `ActionType` enum.
 
-> ActionType::INIT türü sadece bileşenin ilk state hydrate olduğunda çalışır. Yani bunun için bir sınırlama yapmanıza gerek yok.
+> ActionType::INIT only works when the initial state of the component is hydrate. So you don't need to set a constraint for it.
 
 If you want to show the user that the auto save feature is active, you can use the `showAutoSaveEnabledInformation` parameter.
 
@@ -804,6 +804,32 @@ public function panel(Panel $panel): Panel
 }
 ```
 
+### Authorization
+
+Using the authorization methods in the plugin, you can perform the actions you want to hide depending on the situation.
+
+```php
+use Ysfkaya\Menu\MenuPlugin;
+
+public function panel(Panel $panel): Panel
+{
+    return $panel
+        ->default()
+        ->plugins([
+            MenuPlugin::make()
+                ->authorizePage(bool | \Closure $condition = true)
+                ->deletable(bool | \Closure $condition = true)
+                ->editable(bool | \Closure $condition = true)
+                ->cloneable(bool | \Closure $condition = false)
+                ->reorderWithDragAndDrop(bool | \Closure $condition = true)
+                ->reorderWithButtons(bool | \Closure $condition = true)
+                ->cancelActionEnabled(bool | \Closure $condition = true)
+                ->clearActionEnabled(bool | \Closure $condition = true)
+                ->saveActionEnabled(bool | \Closure $condition = true)
+                ->showChildItemHint(bool | \Closure $condition = true)
+        ])
+}
+```
 
 ### Customizing page navigation details
 
