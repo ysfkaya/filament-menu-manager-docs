@@ -1,6 +1,6 @@
 # Filament Menu Manager
 
-![Menu Manager Page](https://github.com/ysfkaya/filament-menu-manager-docs/assets/16710972/4225c122-999d-407d-9c2e-11d8f5364a4b)
+![Menu Manager Page](./screenshots/plugin.png)
 
 ## Introduction
 
@@ -10,72 +10,74 @@ Managing menus might be challenging, but with this plugin, you will be able to d
 
 ### Features
 
-- Manage your menus using multiple locations 
-- Change the order of menu items using drag and drop 
-- Reordering menu items using buttons 
-- Set the maximum depth of menu items based on location 
-- Create custom links to add to the menu 
-- Add your fixed links to the menu item 
-- Add existing data to the menu and present their URLs as items 
-- Create a custom menu panel 
-- Translate texts 
-- Add location-based form components 
-- Add panel-based form components 
+- Manage your menus using multiple locations
+- Change the order of menu items using drag and drop
+- Reordering menu items using buttons
+- Set the maximum depth of menu items based on location
+- Create custom links to add to the menu
+- Add your fixed links to the menu item
+- Add existing data to the menu and present their URLs as items
+- Create a custom menu panel
+- Translate texts
+- Add location-based form components
+- Add panel-based form components
 - Modify default form components
-- Authorization of menu actions 
-- Instantly save changes made to the menu with auto-save mode 
+- Authorization of menu actions
+- Instantly save changes made to the menu with auto-save mode
 - Reflect your menus on the front end using the special directive created for Blade
-- Change the default menu model and use your own model 
-- Customize the Menu Manager page 
+- Change the default menu model and use your own model
+- Customize the Menu Manager page
 
 ### Screenshots
 
 #### Menu Manager Page (Light and Dark Theme)
+
 The menu manager page lists menu items based on location. The menu panels you add are also displayed here.
 
-![Light Page](https://github.com/ysfkaya/filament-menu-manager-docs/assets/16710972/c214233e-a38f-46b5-8e0d-896c2bcf629a)
-![Dark Page](https://github.com/ysfkaya/filament-menu-manager-docs/assets/16710972/4c48ad2b-c951-42cf-9aca-aa54c311bc42)
+![Light Page](./screenshots/light.png)
+![Dark Page](./screenshots/dark.png)
 
 #### Location Selector
+
 You can add any locations you like and create items. Changing the default location is possible.
 
-![Location Selector](https://github.com/ysfkaya/filament-menu-manager-docs/assets/16710972/bd414209-2698-49fb-9642-1c7ef27b0e59)
+![Location Selector](./screenshots/location-selector.png)
 
 #### Custom Link Panel
 
 You can add any `link` you want as an item using this panel.
 
-![Adding Custom Link](https://github.com/ysfkaya/filament-menu-manager-docs/assets/16710972/21a01320-d2cf-4930-aa2b-fa1647890b95)
+![Adding Custom Link](./screenshots/custom-link.png)
 
 #### Fixed Link Panel
 
 Using this panel, you can add the `fixed links` you specify as items.
 
-![Adding Fixed Link](https://github.com/ysfkaya/filament-menu-manager-docs/assets/16710972/3c1bd25d-1ae2-4bee-a40b-2fbf948e461a)
+![Adding Fixed Link](./screenshots/fixed-link.png)
 
 #### Model Panel
 
 Using this panel, you can show the models you set to use menu items as a panel. The example below shows the `Product` model as the menu is set to be available.
 
-![Adding Model Link](https://github.com/ysfkaya/filament-menu-manager-docs/assets/16710972/c6a0bcac-98c9-43ef-bc21-b931d43ac43e)
+![Adding Model Link](./screenshots/model-panel.png)
 
 #### Quick Edit
 
-![Quick Save](https://github.com/ysfkaya/filament-menu-manager-docs/assets/16710972/5e5d4632-63e9-481e-aeb7-b647f375db7d)
+![Quick Save](./screenshots/quick-edit.png)
 
 #### Drag and Drop
 
-![Drag and Drop](https://github.com/ysfkaya/filament-menu-manager-docs/assets/16710972/9cdbcc53-bf8d-49d9-96cb-c8240dbd48b6)
+![Drag and Drop](./screenshots/drag-drop.gif)
 
 #### Reordering with Buttons
 
-![Reorder with Buttons](https://github.com/ysfkaya/filament-menu-manager-docs/assets/16710972/1b454725-fcee-4dd2-b538-90cc330ee874)
+![Reorder with Buttons](./screenshots/reorder.gif)
 
 ## Installation
 
 Thank you for purchasing Menu Manager!
 
-Below you will see the installation steps on how to install the menu manager. Of course, if you have any questions, find a bug, need support, or have a feature request, please don't hesitate to reach out to me at [Discord](https://discord.gg/filament) or filamentmenumanager@gmail.com 
+Below you will see the installation steps on how to install the menu manager. Of course, if you have any questions, find a bug, need support, or have a feature request, please don't hesitate to reach out to me at [Discord](https://discord.gg/filament) or filamentmenumanager@gmail.com
 
 ### Requirements
 
@@ -105,7 +107,7 @@ Once the repository has been added to your composer.json file, you can install M
 composer require ysfkaya/filament-menu-manager
 ```
 
-Next, you will be prompted to provide your username and password. 
+Next, you will be prompted to provide your username and password.
 
 ```bash
 Loading composer repositories with package information
@@ -129,7 +131,7 @@ Username: my_email@gmail.com
 Password: 8b8da5f8-a2a1-11ee-8f4b-0242ac120002:my_domain.com
 ```
 
-The license key and fingerprint should be separated by a colon (:). 
+The license key and fingerprint should be separated by a colon (:).
 
 > Tip: If you get a `402 error`, most likely you forgot to add the colon and fingerprint.
 
@@ -137,49 +139,49 @@ The license key and fingerprint should be separated by a colon (:).
 
 1. Publish and run the migrations
 
-    ```bash
-    php artisan vendor:publish --tag="fi-menu-manager-migrations"
-    php artisan migrate
-    ```
+   ```bash
+   php artisan vendor:publish --tag="fi-menu-manager-migrations"
+   php artisan migrate
+   ```
 
 2. Publish the language files
 
-    Optionally, you may publish the language files:
+   Optionally, you may publish the language files:
 
-    ```bash
-    php artisan vendor:publish --tag="fi-menu-manager-translations"
-    ```
+   ```bash
+   php artisan vendor:publish --tag="fi-menu-manager-translations"
+   ```
 
 3. Add Menu Manager to your Filament Panel
 
-    Add Menu Manager to a panel by instantiating the plugin class and passing it to the `plugins()` method of the configuration:
-    
-    ```php
-    use Ysfkaya\Menu\MenuPlugin;
-    
-    public function panel(Panel $panel): Panel
-    {
-        return $panel
-            ->default()
-            ->plugins([
-                MenuPlugin::make()
-            ])
-    }
-    ```
+   Add Menu Manager to a panel by instantiating the plugin class and passing it to the `plugins()` method of the configuration:
+
+   ```php
+   use Ysfkaya\Menu\MenuPlugin;
+
+   public function panel(Panel $panel): Panel
+   {
+       return $panel
+           ->default()
+           ->plugins([
+               MenuPlugin::make()
+           ])
+   }
+   ```
 
 4. Publish Assets
-    
-    After adding the plugin to your default panel, you need to publish the assets to see the style files used by the plugin.
 
-    ```bash
-    php artisan filament:assets
-    ```
+   After adding the plugin to your default panel, you need to publish the assets to see the style files used by the plugin.
+
+   ```bash
+   php artisan filament:assets
+   ```
 
 ## How it Works
 
-The Menu Manager's database is based on nested sets and uses the [Nested Set](https://github.com/lazychaser/laravel-nestedset) library for Laravel. 
+The Menu Manager's database is based on nested sets and uses the [Nested Set](https://github.com/lazychaser/laravel-nestedset) library for Laravel.
 
-The purpose of the library is as stated in the documentation: 
+The purpose of the library is as stated in the documentation:
 
 > Nested sets or Nested Set Model is a way to effectively store hierarchical data in a relational table.
 
@@ -214,17 +216,17 @@ public function panel(Panel $panel): Panel
 }
 ```
 
-When you set locations as in the example above, you will see `Header` and `Footer` titles in the location selector options on the Menu Manager page. 
+When you set locations as in the example above, you will see `Header` and `Footer` titles in the location selector options on the Menu Manager page.
 
 Since `header` location is set by default, when you first visit the plugin page, it will be set as selected and you will see the menu tree for the `header` location.
 
 > Note: If the default location is not set, the first location you add will be used by default.
 
-![Added Locations](https://github.com/ysfkaya/filament-menu-manager-docs/assets/16710972/177bb5eb-3468-477b-888b-1fb596e6e41f)
+![Added Locations](./screenshots/293588459-177bb5eb-3468-477b-888b-1fb596e6e41f.png)
 
 #### Configure Location Depth
 
-The Depth parameter determines the maximum depth of the menu tree for the location you added. 
+The Depth parameter determines the maximum depth of the menu tree for the location you added.
 
 If we take the example below, let's say your header menu will have menu items with a maximum depth of 3. Then the menu items you can add in the menu manager will be limited in this direction.
 
@@ -247,22 +249,22 @@ The maximum depth will be as follows.
 header
 ├── Features
 ├── Products
-│   ├── Analytics
-│   ├── Engagement
-│   └── Security 
+│ ├── Analytics
+│ ├── Engagement
+│ └── Security
 ├── Marketplace
 ├── Company
-│   ├── About Us
-│   ├── Services
-│   │   ├── Service 1
-│   │   ├── Service 2
-│   │   │   ├── Sub Service ---> This will not be displayed. Because its current level is 4.
-└── Contact 
+│ ├── About Us
+│ ├── Services
+│ │ ├── Service 1
+│ │ ├── Service 2
+│ │ │ ├── Sub Service ---> This will not be displayed. Because its current level is 4.
+└── Contact
 ```
 
 ### Setting up Menu Panels
 
-Menu panels are used to add new items to your menu tree. You can do it quickly using the `CustomMenuPanel`, `ModelMenuPanel` and `StaticMenuPanel` panels built into this plugin. 
+Menu panels are used to add new items to your menu tree. You can do it quickly using the `CustomMenuPanel`, `ModelMenuPanel` and `StaticMenuPanel` panels built into this plugin.
 
 In this topic, you will learn how to change the default menu panels and how to create custom menu panels that you can create according to your needs.
 
@@ -284,7 +286,7 @@ public function panel(Panel $panel): Panel
 }
 ```
 
-![Custom Menu Panel](https://github.com/ysfkaya/filament-menu-manager-docs/assets/16710972/044832e8-64d0-44c0-a52d-9dda3687a52e)
+![Custom Menu Panel](./screenshots/custom-menu-panel.png)
 
 #### ModelMenuPanel
 
@@ -318,7 +320,7 @@ use Ysfkaya\Menu\Contracts\HasMenu;
 class Product extends Model implements HasMenu
 {
     use InteractsWithMenu;
-    
+
     // ...
 
     public function getMenuLabel(): string;
@@ -347,7 +349,7 @@ use Ysfkaya\Menu\Contracts\HasMenu;
 class Post extends Model implements HasMenu
 {
     use InteractsWithMenu;
-    
+
     // ...
 
     public function getMenuPanelSort(): int
@@ -368,7 +370,8 @@ class Post extends Model implements HasMenu
     }
 }
 ```
-![Model Panels](https://github.com/ysfkaya/filament-menu-manager-docs/assets/16710972/8aaab05f-89cf-4947-a94a-78584c3401e8)
+
+![Model Panels](./screenshots/model-menu-panel.png)
 
 The `ModelMenuPanel` class automatically discovers all your models with the `App\Models` namespace in the `app/Models` path. If you want to add a 3rd party model to this panel, you can directly call the `addModel` function. You can also use the `discoverModelsIn` method to automatically save your models if they are in a different location.
 
@@ -429,11 +432,11 @@ public function panel(Panel $panel): Panel
 }
 ```
 
-![Static Menu Panel](https://github.com/ysfkaya/filament-menu-manager-docs/assets/16710972/d0d0f845-7378-41d8-8af6-82a747b77053)
+![Fixed Menu Panel](./screenshots/fixed-menu-panel.png)
 
 #### Creating Your Own Menu Panel
 
-Apart from the menu panels built into this plugin, you can create your own custom menu panels for your needs. 
+Apart from the menu panels built into this plugin, you can create your own custom menu panels for your needs.
 
 First, create a new menu panel class.
 
@@ -523,7 +526,7 @@ public function panel(Panel $panel): Panel
 
 ### Menu Item Form Components
 
-When you add an item to the menu, you can edit it with the form components prepared using Filament's form builder. 
+When you add an item to the menu, you can edit it with the form components prepared using Filament's form builder.
 
 You can edit the default form components, the form components of the item belonging to the added menu panel or the form components used according to the location.
 
@@ -536,12 +539,12 @@ The default form components are currently as follows.
     Forms\Components\TextInput::make('title')
         ->label('Title')
         ->required(),
-    
+
     Forms\Components\TextInput::make('url')
         ->label('Url')
         ->validationAttribute('url')
         ->required(),
-    
+
     Forms\Components\Select::make('target')
         ->label('Target')
         ->default('_self')
@@ -589,7 +592,7 @@ public function panel(Panel $panel): Panel
                             ->label('Image')
                             ->image()
                             ->required(),
-                        
+
                         Forms\Components\Toggle::make('nofollow')
                                 ->label('Nofollow'),
                 ]),
@@ -597,12 +600,12 @@ public function panel(Panel $panel): Panel
 }
 ```
 
-![New Default Form Components](https://github.com/ysfkaya/filament-menu-manager-docs/assets/16710972/724c4f23-701c-40d2-ad1a-16a3ed0f9923)
+![New Default Form Components](./screenshots/default-form-components.png)
 
 > This plugin has some fixture data columns in the database table.
 
-| related_id | related_type | _lft | _rgt | parent_id | title | url | target | location | locale | item | data |
-|:----------:|:------------:|:----:|:----:|:---------:|:-----:|:---:|:------:|:--------:|:------:|:----:|:----:|
+| related_id | related_type | \_lft | \_rgt | parent_id | title | url | target | location | locale | item | data |
+| :--------: | :----------: | :---: | :---: | :-------: | :---: | :-: | :----: | :------: | :----: | :--: | :--: |
 
 > Any attribute added outside the above columns will be automatically stored in the `data` column
 
@@ -651,7 +654,7 @@ public function panel(Panel $panel): Panel
                 ->addLocation(name: 'footer', label: __('Footer'), depth: 2)
                 ->formComponentsLocationFor('header', [
                     // ...rest form components
-    
+
                     Forms\Components\FileUpload::make('image')
                         ->label('Image')
                         ->image()
