@@ -169,7 +169,15 @@ The license key and fingerprint should be separated by a colon (:).
    }
    ```
 
-4. Publish Assets
+4. Publish Config (Optional)
+
+    If you want to change the default settings of the plugin, you can publish the config file.
+
+    ```bash
+    php artisan vendor:publish --tag="filament-menu-manager-config"
+    ```
+
+5. Publish Assets
 
    After adding the plugin to your default panel, you need to publish the assets to see the style files used by the plugin.
 
@@ -723,6 +731,121 @@ public function panel(Panel $panel): Panel
                 ->formComponentsItemFor(Product::class, [
                     // ...
                 ], merge: false), // to use it without default form components
+        ])
+}
+```
+
+### Enabling Auto Save Mode
+
+If you want to save the changes you make to the menu tree instantly, you can use the `autoSave()` method.
+
+```php
+use Ysfkaya\Menu\MenuPlugin;
+
+public function panel(Panel $panel): Panel
+{
+    return $panel
+        ->default()
+        ->plugins([
+            MenuPlugin::make()
+                ->autoSave(
+                    condition: bool | callable, // default: true
+                    showAutoSaveEnabledInformation: bool | callable, // default: false
+                )
+        ])
+}
+```
+
+When you activate the autosave feature, it will automatically save to the database when a new item is added to your menu tree, when the sorting is changed or when a new item is added. If you want to activate this feature for specific action types, you can use the following method.
+
+```php
+use Ysfkaya\Menu\MenuPlugin;
+use Ysfkaya\Menu\Enums\ActionType;
+
+public function panel(Panel $panel): Panel
+{
+    return $panel
+        ->default()
+        ->plugins([
+            MenuPlugin::make()
+                ->autoSave(
+                    condition: function(ActionType $type, string $location){
+                        // Disable autosave for adding new item
+                        if($type === ActionType::ADD){
+                            return false;
+                        }
+
+                        return true;
+                    }
+                )
+        ])
+}
+```
+
+Daha fazla aksiyon türünü incelemek için `ActionType` enum'unu inceleyebilirsiniz. 
+
+> ActionType::INIT türü sadece bileşenin ilk state hydrate olduğunda çalışır. Yani bunun için bir sınırlama yapmanıza gerek yok.
+
+If you want to show the user that the auto save feature is active, you can use the `showAutoSaveEnabledInformation` parameter.
+
+```php
+use Ysfkaya\Menu\MenuPlugin;
+
+public function panel(Panel $panel): Panel
+{
+    return $panel
+        ->default()
+        ->plugins([
+            MenuPlugin::make()
+                ->autoSave(
+                    showAutoSaveEnabledInformation: true
+                )
+        ])
+}
+```
+
+
+### Customizing page navigation details
+
+If you want to customize the navigation details of the Menu Manager page, you can configure it using the dedicated methods on the plugin when configuring it:
+
+```php
+use Ysfkaya\Menu\MenuPlugin;
+
+public function panel(Panel $panel): Panel
+{
+    return $panel
+        ->default()
+        ->plugins([
+            MenuPlugin::make()
+                ->navigationGroup('CMS')
+                ->navigationSort(1)
+                ->navigationLabel('Menu Manager')
+                ->navigationIcon('heroicon-o-rectangle-group')
+                ->activeNavigationIcon('heroicon-o-rectangle-group')
+                ->pageTitle('Menu Manager')
+                ->slug('menu-manager')
+        ])
+}
+```
+
+### Customizing the page
+
+If you want to customise or override other aspects of the page, you can create a new class in your project that extends the `Ysfkaya\Menu\Pages\MenuManager` page. In this class you can override everything you want to customize, like the title, navigation label or navigatin group.
+
+Finally, you should register the new page in Filament by using the `usingPage()` method on the `MenuPlugin`:
+
+```php
+use Ysfkaya\Menu\MenuPlugin;
+use App\Pages\MenuManager;
+
+public function panel(Panel $panel): Panel
+{
+    return $panel
+        ->default()
+        ->plugins([
+            MenuPlugin::make()
+                ->usingPage(MenuManager::class)
         ])
 }
 ```
