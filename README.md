@@ -878,11 +878,30 @@ public function panel(Panel $panel): Panel
 
 ## Rendering Navigation
 
+After all the adjustments, you are now ready to show the menu you will create in the frontend section. In this section we will see how to render your saved menu tree.
+
+Menu rendering will currently be shown through Laravel's Blade template engine. With this plugin, a directive prepared for Blade will help you with rendering.
+
+```blade
+@menu(string $location, string $view, string $dataKey = 'tree', array $viewData = [])
+```
+
+- `$location` is the location you want to render.
+- `$view` is the view you want to render.
+- `$dataKey` is the key of the data you want to send to the view.
+- `$viewData` is the data you want to send to the view.
+
+### Examples
+
+This example is based on a layout prepared on TailwindCSS. You can implement this example with reference to your own template using the structure you want.
+
+```blade
+{{-- views/components/layouts/app.blade.php --}}
+
+
+```
+
 ## Caching
-
-## Extending `MenuRepository` class
-
-## Extending `MenuRenderer` class
 
 ## Support
 
