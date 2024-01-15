@@ -230,7 +230,7 @@ Since `header` location is set by default, when you first visit the plugin page,
 
 > Note: If the default location is not set, the first location you add will be used by default.
 
-![Added Locations](https://raw.githubusercontent.com/ysfkaya/filament-menu-manager-docs/main/screenshots/293588459-177bb5eb-3468-477b-888b-1fb596e6e41f.png)
+![Added Locations](https://raw.githubusercontent.com/ysfkaya/filament-menu-manager-docs/main/screenshots/added-locations.png)
 
 #### Configure Location Depth
 
