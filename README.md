@@ -140,7 +140,7 @@ The license key and fingerprint should be separated by a colon (:).
 1. Publish and run the migrations
 
    ```bash
-   php artisan vendor:publish --tag="fi-menu-manager-migrations"
+   php artisan vendor:publish --tag="filament-menu-manager-migrations"
    php artisan migrate
    ```
 
@@ -149,7 +149,7 @@ The license key and fingerprint should be separated by a colon (:).
    Optionally, you may publish the language files:
 
    ```bash
-   php artisan vendor:publish --tag="fi-menu-manager-translations"
+   php artisan vendor:publish --tag="filament-menu-manager-translations"
    ```
 
 3. Add Menu Manager to your Filament Panel
@@ -1069,6 +1069,8 @@ You can then set the `enabled` parameter you see in the config file to `true`.
 After these instructions, Laravel's cache mechanism will work automatically when your menus are used on the frontend side.
 
 > The cache will be cleared with every menu update.
+
+> Highly recommended use `TaggableStore` cache driver. For example: `redis`, `memcached` etc.
 
 ## Support
 
