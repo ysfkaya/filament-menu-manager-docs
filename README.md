@@ -77,7 +77,7 @@ Using this panel, you can show the models you set to use menu items as a panel. 
 
 Thank you for purchasing Menu Manager!
 
-Below you will see the installation steps on how to install the menu manager. Of course, if you have any questions, find a bug, need support, or have a feature request, please don't hesitate to reach out to me at [Discord](https://discord.gg/filament) or filamentmenumanager@gmail.com
+Below you will see the installation steps on how to install the menu manager. Of course, if you have any questions, find a bug, need support, or have a feature request, please don't hesitate to reach out to me at [Discord](https://discord.com/channels/883083792112300104/1197977998566105259) or filamentmenumanager@gmail.com
 
 ### Requirements
 
@@ -1074,4 +1074,4 @@ After these instructions, Laravel's cache mechanism will work automatically when
 
 ## Support
 
-If you have a question, bug or feature request, please e-mail me at filamentmenumanager@gmail.com or join us #menu-manager on Discord. I'd love to hear from you.
+If you have a question, bug or feature request, please e-mail me at filamentmenumanager@gmail.com or join us [#ysfkaya-menu-manager on Discord](https://discord.com/channels/883083792112300104/1197977998566105259). I'd love to hear from you.
