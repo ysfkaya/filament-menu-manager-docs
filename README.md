@@ -769,9 +769,9 @@ public function panel(Panel $panel): Panel
         ->plugins([
             MenuPlugin::make()
                 ->autoSave(
-                    condition: function(ActionType $type, string $location){
+                    condition: function(string $location, ?ActionType $actionType = null){
                         // Disable autosave for adding new item
-                        if($type === ActionType::ADD){
+                        if($actionType === ActionType::ADD){
                             return false;
                         }
 
