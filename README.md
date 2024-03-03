@@ -10,23 +10,46 @@ Managing menus might be challenging, but with this plugin, you will be able to d
 
 ### Features
 
-- Manage your menus using multiple locations
-- Change the order of menu items using drag and drop
-- Reordering menu items using buttons
-- Set the maximum depth of menu items based on location
-- Create custom links to add to the menu
-- Add your fixed links to the menu item
-- Add existing data to the menu and present their URLs as items
-- Create a custom menu panel
-- Translate texts
-- Add location-based form components
-- Add panel-based form components
-- Modify default form components
-- Authorization of menu actions
-- Instantly save changes made to the menu with auto-save mode
-- Reflect your menus on the front end using the special directive created for Blade
-- Change the default menu model and use your own model
-- Customize the Menu Manager page
+Enhancing the clarity and effectiveness of feature descriptions can significantly improve user understanding and engagement. Here are the revised features with more impactful descriptions and the addition of relevant icons for visual appeal:
+
+### Features
+
+- **Effortlessly Manage Menus Across Multiple Locations** 🚩 - Seamlessly manage your navigation menus across various locations within your application, ensuring consistent user experiences.
+
+- **Intuitive Drag-and-Drop Menu Reordering** 🖱️ - Easily rearrange your menu items to suit your site's structure and user navigation patterns with a simple drag-and-drop interface.
+
+- **Reorder Menu Items with Precision Using Buttons** 🔼🔽 - Fine-tune the order of your menu items for perfect alignment using straightforward up and down buttons.
+
+- **Limit Menu Depth Based on Location** 📏 - Customize the maximum depth of your menus for each location, keeping your navigation clean and user-friendly.
+
+- **Design Custom Links for Your Menus** 🔗 - Create and add bespoke links to your menus, directing users exactly where you want them to go.
+
+- **Incorporate Fixed Links into Menu Items** 📌 - Add permanent links to your menu items, ensuring essential pages are always one click away.
+
+- **Enrich Menus with Existing Data and URLs** 📂 - Dynamically add existing data to your menus, presenting them as navigable items with their URLs.
+
+- **Craft Custom Menu Panels for Enhanced Navigation** 🎨 - Design unique menu panels that reflect your brand and improve site navigation.
+
+- **Translate Menu Texts for Global Accessibility** 🌐 - Make your menus accessible to a global audience by translating texts into multiple languages.
+
+- **Incorporate Location-Based Form Components** 📍 - Enhance forms with components that adjust based on the user's location, improving relevance and user experience.
+
+- **Utilize Panel-Based Form Components for Structured Data Collection** 📋 - Collect information more efficiently with forms organized into logical, panel-based components.
+
+- **Customize Default Form Components to Fit Your Needs** ✏️ - Tailor the default form components to better suit your application's requirements and user expectations.
+
+- **Secure Menu Actions with Authorization** 🔒 - Ensure that only authorized users can modify or interact with menu items, protecting your site's integrity.
+
+- **Auto-Save Feature for Instant Menu Updates** 💾 - Changes to your menus are saved instantly with auto-save mode, ensuring no update is ever lost.
+
+- **Seamlessly Display Menus on the Front End with Blade Directive** 🖥️ - Use a special directive created for Blade to effortlessly integrate your menus into the front-end of your site.
+
+- **Customize Your Menu Model** 🛠️ - Replace the default menu model with your own to gain greater control over menu structure and functionality.
+
+- **Personalize the Menu Manager Interface** 🎚️ - Customize the look and functionality of the Menu Manager page to match your workflow and preferences.
+
+- **Make Menu Items Multilingual** 🌍 - Extend the reach of your menus with multilingual items, accommodating users from different linguistic backgrounds.
+
 
 ### Screenshots
 
@@ -804,6 +827,93 @@ public function panel(Panel $panel): Panel
 }
 ```
 
+### Translatable
+
+If your website supports multiple languages, you may want to display menu items according to the language of the site. For this, you can simply activate the translatable feature using the functions you see below in this plugin.
+
+> Please note: This is not compatible with `Spatie's Translatable`. This plugin's multilingual support is built on its own database structure.
+
+```php
+use Ysfkaya\Menu\MenuPlugin;
+
+public function panel(Panel $panel): Panel
+{
+    return $panel
+        ->default()
+        ->plugins([
+            MenuPlugin::make()
+                ->translatable(
+                    condition: bool | \Closure, 
+                    locales: array | \Closure | default: null, 
+                    duplicateNodesAfterLocaleChange: bool | \Closure | default: false, 
+                    fillEmptyTranslatableNodes: bool | \Closure | default: false
+                )
+                ->translatableLocales(locales: array)
+                ->duplicateNodesAfterLocaleChange(condition: bool | \Closure)
+                ->fillEmptyTranslatableNodes(condition: bool | \Closure)
+                ->getLocaleLabelUsing(callback: \Closure),
+        ])
+}
+```
+
+![Translatable](https://raw.githubusercontent.com/ysfkaya/filament-menu-manager-docs/main/screenshots/translatable.png)
+
+You can pass a set of locales to the plugin method using the `translatable` or the `translatableLocales` to set locales that can be used to translate the menu tree:
+
+```php
+use Ysfkaya\Menu\MenuPlugin;
+
+public function panel(Panel $panel): Panel
+{
+    return $panel
+        ->default()
+        ->plugins([
+            MenuPlugin::make()
+                ->translatable(locales: ['en', 'tr', 'es'])
+                // or
+                ->translatableLocales(['en', 'tr', 'es'])
+        ])
+}
+```
+
+By default, when changing the language, the menu tree is reset and shows the data for the selected language. Therefore, if there is no data in the selected language, you can duplicate the menu tree of the previous language to the new menu tree.
+
+```php
+use Ysfkaya\Menu\MenuPlugin;
+
+public function panel(Panel $panel): Panel
+{
+    return $panel
+        ->default()
+        ->plugins([
+            MenuPlugin::make()
+                ->translatable(duplicateNodesAfterLocaleChange: true)
+                // or
+                ->duplicateNodesAfterLocaleChange()
+        ])
+}
+```
+
+Since this feature was added to the plugin later, if you have data saved in a previous version and want to apply a translation, you may find that your previous data will not be reflected in the menu tree. For this, you can use the following method to make your menu items with `locale` value null language compatible. 
+
+```php
+use Ysfkaya\Menu\MenuPlugin;
+
+public function panel(Panel $panel): Panel
+{
+    return $panel
+        ->default()
+        ->plugins([
+            MenuPlugin::make()
+                ->translatable(fillEmptyTranslatableNodes: true)
+                // or
+                ->fillEmptyTranslatableNodes()
+        ])
+}
+```
+
+Of course, this feature can also be used when you add a language feature to your application later.
+
 ### Authorization
 
 Using the authorization methods in the plugin, you can perform the actions you want to hide depending on the situation.
@@ -1071,6 +1181,65 @@ After these instructions, Laravel's cache mechanism will work automatically when
 > The cache will be cleared with every menu update.
 
 > Highly recommended use `TaggableStore` cache driver. For example: `redis`, `memcached` etc.
+
+## Extend `Link` Data Transfer Object
+
+Link DTO is used in the menu model and you can control your menu item with the properties in this DTO when you want to render the navigation.
+
+If you don't want to change the menu model just for this class, you can specify the class you want to use the Link DTO in the config setting.
+
+```php
+use App\Data\ExtendedLink;
+
+return [
+    // ...
+
+    /*
+    |--------------------------------------------------------------------------
+    | DTO
+    |--------------------------------------------------------------------------
+    |
+    | If you want to use your own DTO, you can
+    | change the link option. Your DTO must implement the MenuLink interface.
+    |
+    */
+    'link' => ExtendedLink::class,
+];
+```
+
+The `ExtendedLink` must implement the `MenuLink` interface.
+
+```php
+<?php
+
+namespace App\Data;
+
+use Ysfkaya\Menu\Contracts\MenuLink;
+
+class ExtendedLink implements MenuLink
+{
+    public function __construct(
+        public string $title,
+        public string $url,
+        public string $target = '_self',
+        public string $icon = null,
+        public bool $nofollow = false,
+        public array $data = [],
+    ) {}
+
+    public static function from($data)
+    {
+        return new self(
+            title: $data['title'],
+            url: $data['url'],
+            target: $data['target'] ?? '_self',
+            icon: $data['icon'] ?? null,
+            nofollow: $data['nofollow'] ?? false,
+            data: $data['data'] ?? [],
+        );
+    }
+}
+```
 
 ## Support
 
