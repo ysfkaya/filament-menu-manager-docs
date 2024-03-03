@@ -1100,7 +1100,7 @@ public function panel(Panel $panel): Panel
                                 </svg>
                             </button>
                             <div id="mega-menu-icons-dropdown" class="absolute z-10 grid hidden w-auto grid-cols-2 text-sm bg-white border border-gray-100 rounded-lg shadow-md dark:border-gray-700 md:grid-cols-3 dark:bg-gray-700">
-                                @foreach ($item->children->chunk(4) as $children)
+                                @foreach ($item->children->toCollection()->chunk(4) as $children)
                                     <div class="p-4 pb-0 text-gray-900 md:pb-4 dark:text-white">
                                         <ul class="space-y-4" aria-labelledby="mega-menu-icons-dropdown-button">
                                             @foreach ($children as $childItem)
