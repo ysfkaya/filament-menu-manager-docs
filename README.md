@@ -1000,6 +1000,7 @@ Menu rendering will currently be shown through Laravel's Blade template engine. 
 - `$view` is the view you want to render.
 - `$dataKey` is the key of the data you want to send to the view.
 - `$viewData` is the data you want to send to the view.
+- `$locale` if the translatable feature is active, you can pass the locale you want to render otherwise it will use the current locale.
 
 ### Examples
 
@@ -1216,7 +1217,7 @@ namespace App\Data;
 
 use Ysfkaya\Menu\Contracts\MenuLink;
 
-class ExtendedLink implements MenuLink
+class ExtendedLink extends MenuLink
 {
     public function __construct(
         public string $title,
@@ -1226,18 +1227,6 @@ class ExtendedLink implements MenuLink
         public bool $nofollow = false,
         public array $data = [],
     ) {}
-
-    public static function from($data)
-    {
-        return new self(
-            title: $data['title'],
-            url: $data['url'],
-            target: $data['target'] ?? '_self',
-            icon: $data['icon'] ?? null,
-            nofollow: $data['nofollow'] ?? false,
-            data: $data['data'] ?? [],
-        );
-    }
 }
 ```
 
