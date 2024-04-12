@@ -105,6 +105,7 @@ Below you will see the installation steps on how to install the menu manager. Of
 - Filament: 3.0+
 - Laravel: 10.0+
 
+### Versions
 
 | Laravel | Package Version |
 |---------|-----------------|
