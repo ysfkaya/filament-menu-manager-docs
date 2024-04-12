@@ -10,10 +10,6 @@ Managing menus might be challenging, but with this plugin, you will be able to d
 
 ### Features
 
-Enhancing the clarity and effectiveness of feature descriptions can significantly improve user understanding and engagement. Here are the revised features with more impactful descriptions and the addition of relevant icons for visual appeal:
-
-### Features
-
 - **Effortlessly Manage Menus Across Multiple Locations** 🚩 - Seamlessly manage your navigation menus across various locations within your application, ensuring consistent user experiences.
 
 - **Intuitive Drag-and-Drop Menu Reordering** 🖱️ - Easily rearrange your menu items to suit your site's structure and user navigation patterns with a simple drag-and-drop interface.
@@ -108,6 +104,13 @@ Below you will see the installation steps on how to install the menu manager. Of
 - MySQL: 5.7.24+ or Postgres
 - Filament: 3.0+
 - Laravel: 10.0+
+
+
+| Laravel | Package Version |
+|---------|-----------------|
+|  10.0+  |      ^1.0       |
+|  11.0+  |      ^2.0       |
+
 
 ### Installing with Composer
 
