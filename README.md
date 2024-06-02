@@ -1161,6 +1161,67 @@ public function panel(Panel $panel): Panel
 </footer>
 ```
 
+#### Using Prebuilt Views
+
+If you want to use the prebuilt views, you can use the following views.
+
+> [!WARNING]  
+> All views are prepared with TailwindCSS and Alpine.js. So that you should add these libraries to your project.
+
+You can publish the views to your project using the following command.
+
+```bash
+php artisan vendor:publish --tag="menu-manager-views"
+```
+
+##### Simple Navbar - Max Depth is 1
+
+```blade
+@menu('header', 'menu-manager::tailwind.navbar.simple')
+```
+
+![Simple Dark](https://raw.githubusercontent.com/ysfkaya/filament-menu-manager-docs/main/screenshots/views/simple-dark.png)
+
+---
+
+![Simple Dark Responsive](https://raw.githubusercontent.com/ysfkaya/filament-menu-manager-docs/main/screenshots/views/simple-dark-responsive.png)
+
+#### Navbar with Dropdown - Max Depth is 2
+
+```blade
+@menu('header', 'menu-manager::tailwind.navbar.dropdown')
+```
+
+![Dropdown Dark](https://raw.githubusercontent.com/ysfkaya/filament-menu-manager-docs/main/screenshots/views/dropdown-dark.png)
+
+---
+
+![Dropdown Dark Responsive](https://raw.githubusercontent.com/ysfkaya/filament-menu-manager-docs/main/screenshots/views/dropdown-dark-responsive.png)
+
+#### Multi Level Navbar - Max Depth is 3
+
+```blade
+@menu('header', 'menu-manager::tailwind.navbar.multi-level')
+```
+
+![Multi Level Dark](https://raw.githubusercontent.com/ysfkaya/filament-menu-manager-docs/main/screenshots/views/multi-level-dark.png)
+
+---
+
+![Multi Level Dark Responsive](https://raw.githubusercontent.com/ysfkaya/filament-menu-manager-docs/main/screenshots/views/multi-level-dark-responsive.png)
+
+#### Mega Menu - Max Depth is 2
+
+```blade
+@menu('header', 'menu-manager::tailwind.mega-menu')
+```
+
+![Mega Menu Dark](https://raw.githubusercontent.com/ysfkaya/filament-menu-manager-docs/main/screenshots/views/mega-menu-dark.png)
+
+---
+
+![Mega Menu Dark Responsive](https://raw.githubusercontent.com/ysfkaya/filament-menu-manager-docs/main/screenshots/views/mega-menu-dark-responsive.png)
+
 #### Advanced Rendering
 
 The menu tree items in each menu directive return the `Ysfkaya\Menu\Data\Link` object. This object contains some methods that will help you during rendering.
