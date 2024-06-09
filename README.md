@@ -1228,18 +1228,6 @@ export default {
 
 ![Multi Level Responsive](https://raw.githubusercontent.com/ysfkaya/filament-menu-manager-docs/main/screenshots/views/multi-level-responsive.png)
 
-#### Mega Menu
-
-```blade
-@menu('header', 'menu-manager::tailwind.mega-menu')
-```
-
-![Mega Menu Dark](https://raw.githubusercontent.com/ysfkaya/filament-menu-manager-docs/main/screenshots/views/mega-menu-dark.png)
-
----
-
-![Mega Menu Dark Responsive](https://raw.githubusercontent.com/ysfkaya/filament-menu-manager-docs/main/screenshots/views/mega-menu-dark-responsive.png)
-
 #### Advanced Rendering
 
 The menu tree items in each menu directive return the `Ysfkaya\Menu\Data\Link` object. This object contains some methods that will help you during rendering.
