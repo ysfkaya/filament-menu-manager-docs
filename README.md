@@ -1201,7 +1201,7 @@ export default {
 
 ![Simple Dark Responsive](https://raw.githubusercontent.com/ysfkaya/filament-menu-manager-docs/main/screenshots/views/simple-dark-responsive.png)
 
-#### Navbar with Dropdown (Requires Popper.js)
+##### Navbar with Dropdown (Requires Popper.js)
 
 ```blade
 @menu('header', 'menu-manager::tailwind.navbar.dropdown', viewData: [
@@ -1216,7 +1216,7 @@ export default {
 
 ![Dropdown Responsive](https://raw.githubusercontent.com/ysfkaya/filament-menu-manager-docs/main/screenshots/views/dropdown-responsive.png)
 
-#### Multi Level Navbar (Requires Popper.js)
+##### Multi Level Navbar (Requires Popper.js)
 
 ```blade
 @menu('header', 'menu-manager::tailwind.navbar.multi-level')
