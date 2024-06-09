@@ -1201,29 +1201,32 @@ export default {
 
 ![Simple Dark Responsive](https://raw.githubusercontent.com/ysfkaya/filament-menu-manager-docs/main/screenshots/views/simple-dark-responsive.png)
 
-#### Navbar with Dropdown
+#### Navbar with Dropdown (Requires Popper.js)
 
 ```blade
-@menu('header', 'menu-manager::tailwind.navbar.dropdown')
+@menu('header', 'menu-manager::tailwind.navbar.dropdown', viewData: [
+    'logo' => 'https://via.placeholder.com/150',
+    'brand' => 'Brand Name',
+])
 ```
 
-![Dropdown Dark](https://raw.githubusercontent.com/ysfkaya/filament-menu-manager-docs/main/screenshots/views/dropdown.png)
+![Dropdown](https://raw.githubusercontent.com/ysfkaya/filament-menu-manager-docs/main/screenshots/views/dropdown.png)
 
 ---
 
-![Dropdown Dark Responsive](https://raw.githubusercontent.com/ysfkaya/filament-menu-manager-docs/main/screenshots/views/dropdown-dark.png)
+![Dropdown Responsive](https://raw.githubusercontent.com/ysfkaya/filament-menu-manager-docs/main/screenshots/views/dropdown-responsive.png)
 
-#### Multi Level Navbar
+#### Multi Level Navbar (Requires Popper.js)
 
 ```blade
 @menu('header', 'menu-manager::tailwind.navbar.multi-level')
 ```
 
-![Multi Level Dark](https://raw.githubusercontent.com/ysfkaya/filament-menu-manager-docs/main/screenshots/views/multi-level-dark.png)
+![Multi Level](https://raw.githubusercontent.com/ysfkaya/filament-menu-manager-docs/main/screenshots/views/multi-level.png)
 
 ---
 
-![Multi Level Dark Responsive](https://raw.githubusercontent.com/ysfkaya/filament-menu-manager-docs/main/screenshots/views/multi-level-dark-responsive.png)
+![Multi Level Responsive](https://raw.githubusercontent.com/ysfkaya/filament-menu-manager-docs/main/screenshots/views/multi-level-responsive.png)
 
 #### Mega Menu
 
