@@ -1163,7 +1163,7 @@ public function panel(Panel $panel): Panel
 
 #### Using Prebuilt Views
 
-If you want to use the prebuilt views, you can use the following views.
+If you want to use pre-built views, you can use the following methods. However, it should be noted that the images presented in this plugin are purely examples and will help you decide how you want to integrate your own view in the frontend. It will be your decision whether to use it on the production side or not.
 
 > [!WARNING]  
 > All views are prepared with TailwindCSS and Alpine.js. So that you should add these libraries to your project.
@@ -1174,10 +1174,25 @@ You can publish the views to your project using the following command.
 php artisan vendor:publish --tag="menu-manager-views"
 ```
 
-##### Simple Navbar - Max Depth is 1
+```js
+// tailwind.config.js
+
+//...
+export default {
+    content: [
+        // ...
+        './vendor/ysfkaya/filament-menu-manager/resources/views/tailwind/**/*.blade.php',
+    ],
+}
+```
+
+##### Simple Navbar
 
 ```blade
-@menu('header', 'menu-manager::tailwind.navbar.simple')
+@menu('header', 'menu-manager::tailwind.navbar.simple', viewData: [
+    'logo' => 'https://via.placeholder.com/150',
+    'brand' => 'Brand Name',
+])
 ```
 
 ![Simple Dark](https://raw.githubusercontent.com/ysfkaya/filament-menu-manager-docs/main/screenshots/views/simple-dark.png)
@@ -1186,19 +1201,19 @@ php artisan vendor:publish --tag="menu-manager-views"
 
 ![Simple Dark Responsive](https://raw.githubusercontent.com/ysfkaya/filament-menu-manager-docs/main/screenshots/views/simple-dark-responsive.png)
 
-#### Navbar with Dropdown - Max Depth is 2
+#### Navbar with Dropdown
 
 ```blade
 @menu('header', 'menu-manager::tailwind.navbar.dropdown')
 ```
 
-![Dropdown Dark](https://raw.githubusercontent.com/ysfkaya/filament-menu-manager-docs/main/screenshots/views/dropdown-dark.png)
+![Dropdown Dark](https://raw.githubusercontent.com/ysfkaya/filament-menu-manager-docs/main/screenshots/views/dropdown.png)
 
 ---
 
-![Dropdown Dark Responsive](https://raw.githubusercontent.com/ysfkaya/filament-menu-manager-docs/main/screenshots/views/dropdown-dark-responsive.png)
+![Dropdown Dark Responsive](https://raw.githubusercontent.com/ysfkaya/filament-menu-manager-docs/main/screenshots/views/dropdown-dark.png)
 
-#### Multi Level Navbar - Max Depth is 3
+#### Multi Level Navbar
 
 ```blade
 @menu('header', 'menu-manager::tailwind.navbar.multi-level')
@@ -1210,7 +1225,7 @@ php artisan vendor:publish --tag="menu-manager-views"
 
 ![Multi Level Dark Responsive](https://raw.githubusercontent.com/ysfkaya/filament-menu-manager-docs/main/screenshots/views/multi-level-dark-responsive.png)
 
-#### Mega Menu - Max Depth is 2
+#### Mega Menu
 
 ```blade
 @menu('header', 'menu-manager::tailwind.mega-menu')
