@@ -46,7 +46,6 @@ Managing menus might be challenging, but with this plugin, you will be able to d
 
 - **Make Menu Items Multilingual** 🌍 - Extend the reach of your menus with multilingual items, accommodating users from different linguistic backgrounds.
 
-
 ### Screenshots
 
 #### Menu Manager Page (Light and Dark Theme)
@@ -108,10 +107,9 @@ Below you will see the installation steps on how to install the menu manager. Of
 ### Versions
 
 | Laravel | Package Version |
-|---------|-----------------|
-|  10.0+  |      ^1.0       |
-|  11.0+  |      ^2.0       |
-
+| ------- | --------------- |
+| 10.0+   | ^1.0            |
+| 11.0+   | ^2.0            |
 
 ### Installing with Composer
 
@@ -847,9 +845,9 @@ public function panel(Panel $panel): Panel
         ->plugins([
             MenuPlugin::make()
                 ->translatable(
-                    condition: bool | \Closure, 
-                    locales: array | \Closure | default: null, 
-                    duplicateNodesAfterLocaleChange: bool | \Closure | default: false, 
+                    condition: bool | \Closure,
+                    locales: array | \Closure | default: null,
+                    duplicateNodesAfterLocaleChange: bool | \Closure | default: false,
                     fillEmptyTranslatableNodes: bool | \Closure | default: false
                 )
                 ->translatableLocales(locales: array)
@@ -898,7 +896,7 @@ public function panel(Panel $panel): Panel
 }
 ```
 
-Since this feature was added to the plugin later, if you have data saved in a previous version and want to apply a translation, you may find that your previous data will not be reflected in the menu tree. For this, you can use the following method to make your menu items with `locale` value null language compatible. 
+Since this feature was added to the plugin later, if you have data saved in a previous version and want to apply a translation, you may find that your previous data will not be reflected in the menu tree. For this, you can use the following method to make your menu items with `locale` value null language compatible.
 
 ```php
 use Ysfkaya\Menu\MenuPlugin;
@@ -944,6 +942,31 @@ public function panel(Panel $panel): Panel
         ])
 }
 ```
+
+You can access some item values within `deletable`, `editable`, `cloneable`, `reorderWithDragAndDrop`, `reorderWithButtons`, `showChildItemHint` methods.
+
+```php
+use Ysfkaya\Menu\MenuPlugin;
+
+public function panel(Panel $panel): Panel
+{
+    return $panel
+        ->default()
+        ->plugins([
+            MenuPlugin::make()
+                ->editable(fn ($location, $itemState, $level, $path) => data_get($itemState, 'title') !== 'Home')
+        ])
+}
+```
+
+Table below shows the expected values for each method.
+
+| Parameter    | Description                    | Type   | Example                                                                     |
+| ------------ | ------------------------------ | ------ | --------------------------------------------------------------------------- |
+| `$location`  | The location of the menu tree. | string | `header`                                                                    |
+| `$itemState` | The state of the item.         | array  | `['title' => 'Home', 'url' => '/', 'target' => '_self']`                    |
+| `$level`     | The level of the item.         | int    | `1`                                                                         |
+| `$path`      | The state path of the item.    | string | `743209aa-6493-4a94-8097-e61072cc361b.080e3bd5-3830-4f59-ba2f-baff1adfe20a` |
 
 ### Customizing page navigation details
 
@@ -1179,11 +1202,11 @@ php artisan vendor:publish --tag="menu-manager-views"
 
 //...
 export default {
-    content: [
-        // ...
-        './vendor/ysfkaya/filament-menu-manager/resources/views/tailwind/**/*.blade.php',
-    ],
-}
+  content: [
+    // ...
+    "./vendor/ysfkaya/filament-menu-manager/resources/views/tailwind/**/*.blade.php",
+  ],
+};
 ```
 
 ##### Simple Navbar
@@ -1244,7 +1267,7 @@ To enable caching, first publish the plugin's config file in your project.
 php artisan vendor:publish --tag="filament-menu-manager-config"
 ```
 
-You can then set the `enabled` parameter you see in the config file to `true`. 
+You can then set the `enabled` parameter you see in the config file to `true`.
 
 > If you wish, you can set `MENU_CACHE_ENABLED=true` only in the `.env` file.
 
