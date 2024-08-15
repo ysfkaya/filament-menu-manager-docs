@@ -297,7 +297,7 @@ header
 
 ### Setting up Menu Panels
 
-Menu panels are used to add new items to your menu tree. You can do it quickly using the `CustomMenuPanel`, `ModelMenuPanel` and `StaticMenuPanel` panels built into this plugin.
+Menu panels are used to add new items to your menu tree. You can do it quickly using the `CustomMenuPanel`, `ModelMenuPanel` and `FixedMenuPanel` panels built into this plugin.
 
 In this topic, you will learn how to change the default menu panels and how to create custom menu panels that you can create according to your needs.
 
@@ -431,13 +431,13 @@ public function panel(Panel $panel): Panel
 }
 ```
 
-#### StaticMenuPanel
+#### FixedMenuPanel
 
-If you have fixed url addresses on your site and want to show them in the menu panel, `StaticMenuPanel` will meet your needs.
+If you have fixed url addresses on your site and want to show them in the menu panel, `FixedMenuPanel` will meet your needs.
 
 ```php
 use Ysfkaya\Menu\MenuPlugin;
-use Ysfkaya\Menu\Panels\StaticMenuPanel;
+use Ysfkaya\Menu\Panels\FixedMenuPanel;
 
 public function panel(Panel $panel): Panel
 {
@@ -445,7 +445,7 @@ public function panel(Panel $panel): Panel
         ->plugins([
             MenuPlugin::make()
                 ->addMenuPanel(fn() =>
-                    StaticMenuPanel::make()
+                    FixedMenuPanel::make()
                         ->addLink('Home', '/')
                         ->addLink('About', '/about')
                         ->addLink('Contact', '/contact')
