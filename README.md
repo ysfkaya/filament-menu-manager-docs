@@ -1013,6 +1013,52 @@ public function panel(Panel $panel): Panel
 }
 ```
 
+### Adding hooks to actions
+
+After the actions in the plugin (`edit`, `delete`, `clone`, `reorder`, `moveUp`, `moveDown`, `indent`, `dedent`) are triggered, you may want to do some processing.
+
+It is possible to perform these operations with reference to the following methods
+
+```php
+
+use Ysfkaya\Menu\MenuPlugin;
+use Filament\Forms\Components\Actions\Action;
+use Illuminate\Database\Eloquent\Model;
+
+public function panel(Panel $panel): Panel
+{
+    return $panel
+        ->default()
+        ->plugins([
+            MenuPlugin::make()
+                ->afterEditAction(function (Action $action, array $data, array $arguments, ?int $recordId = null, ?Model $record = null) {
+                    // Do something after the edit action
+                })
+                ->afterDeleteAction(function (Action $action, array $arguments) {
+                    // Do something after the delete action
+                })
+                ->afterCloneAction(function (Action $action, array $arguments, array $items) {
+                    // Do something after the clone action
+                })
+                ->afterReorderAction(function (Action $action, array $arguments, array $items) {
+                    // Do something after the reorder action
+                })
+                ->afterMoveUpAction(function (Action $action, array $arguments, array $items) {
+                    // Do something after the move up action
+                })
+                ->afterMoveDownAction(function (Action $action, array $arguments, array $items) {
+                    // Do something after the move down action
+                })
+                ->afterIndentAction(function (Action $action, array $arguments, array $items) {
+                    // Do something after the indent action
+                })
+                ->afterDedentAction(function (Action $action, array $arguments, array $items) {
+                    // Do something after the dedent action
+                })
+        ])
+}
+```
+
 ## Rendering Navigation
 
 After all the adjustments, you are now ready to show the menu you will create in the frontend section. In this section we will see how to render your saved menu tree.
