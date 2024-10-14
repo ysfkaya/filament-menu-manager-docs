@@ -1015,13 +1015,15 @@ public function panel(Panel $panel): Panel
 
 ### Adding hooks to actions
 
-After the actions in the plugin (`edit`, `delete`, `clone`, `reorder`, `moveUp`, `moveDown`, `indent`, `dedent`) are triggered, you may want to do some processing.
+After the actions in the plugin (`add`, `edit`, `delete`, `clone`, `reorder`, `moveUp`, `moveDown`, `indent`, `dedent`) are triggered, you may want to do some processing.
 
 It is possible to perform these operations with reference to the following methods
 
 ```php
 
 use Ysfkaya\Menu\MenuPlugin;
+use Ysfkaya\Menu\Forms\MenuPanelItem;
+use Filament\Forms\ComponentContainer;
 use Filament\Forms\Components\Actions\Action;
 use Illuminate\Database\Eloquent\Model;
 
@@ -1031,6 +1033,9 @@ public function panel(Panel $panel): Panel
         ->default()
         ->plugins([
             MenuPlugin::make()
+                ->afterAddAction(function (string $panel, array $data, array $formData, MenuPanelItem $menuItem, ComponentContainer $container) {
+                    // Do something after the add action
+                })
                 ->afterEditAction(function (Action $action, array $data, array $arguments, ?int $recordId = null, ?Model $record = null) {
                     // Do something after the edit action
                 })
