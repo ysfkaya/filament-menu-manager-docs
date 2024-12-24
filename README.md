@@ -319,6 +319,23 @@ public function panel(Panel $panel): Panel
 }
 ```
 
+<!-- to change default -->
+You can change the default menu panel by using the `defaultMenuPanel` method.
+
+```php
+use Ysfkaya\Menu\MenuPlugin;
+use App\Menu\Panels\MyCustomMenuPanel;
+
+public function panel(Panel $panel): Panel
+{
+    return $panel
+        ->plugins([
+            MenuPlugin::make()
+                ->defaultMenuPanel(fn() => MyCustomMenuPanel::make()),
+        ])
+}
+```
+
 ![Custom Menu Panel](https://raw.githubusercontent.com/ysfkaya/filament-menu-manager-docs/main/screenshots/custom-menu-panel.png)
 
 #### ModelMenuPanel
