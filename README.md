@@ -319,7 +319,6 @@ public function panel(Panel $panel): Panel
 }
 ```
 
-<!-- to change default -->
 You can change the default menu panel by using the `defaultMenuPanel` method.
 
 ```php
@@ -335,6 +334,25 @@ public function panel(Panel $panel): Panel
         ])
 }
 ```
+
+If you want to hide the menu panel based on a location or a condition, you can use the `visible` or `hidden` method.
+
+```php
+use Ysfkaya\Menu\MenuPlugin;
+use Ysfkaya\Menu\Panels\CustomMenuPanel;
+
+public function panel(Panel $panel): Panel
+{
+    return $panel
+        ->plugins([
+            MenuPlugin::make()
+                ->addLocation(name: 'header', label: 'Header', depth: 3)
+                ->addLocation(name: 'footer', label: 'Footer', depth: 2)
+                ->addMenuPanel(fn() => CustomMenuPanel::make()->visible(fn($location) => $location === 'header')),
+        ])
+}
+```
+
 
 ![Custom Menu Panel](https://raw.githubusercontent.com/ysfkaya/filament-menu-manager-docs/main/screenshots/custom-menu-panel.png)
 
@@ -377,6 +395,8 @@ class Product extends Model implements HasMenu
 
     public function getMenuPanelSort(): int;
 
+    public function getMenuPanelVisibility(): ?callable;
+
     public function getMenuSingularLabel(): string;
 
     public function getMenuTitleColumn(): string;
@@ -417,6 +437,13 @@ class Post extends Model implements HasMenu
     public function getMenuTitleColumn(): string
     {
         return 'title';
+    }
+
+    public function getMenuPanelVisibility(): ?callable
+    {
+        return function ($location) {
+            return $location === 'header';
+        };
     }
 }
 ```
