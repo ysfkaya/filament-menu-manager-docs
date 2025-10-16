@@ -99,17 +99,10 @@ Below you will see the installation steps on how to install the menu manager. Of
 
 ### Requirements
 
-- PHP: 8.1+
+- PHP: 8.2+
 - MySQL: 5.7.24+ or Postgres
-- Filament: 3.0+
-- Laravel: 10.0+
-
-### Versions
-
-| Laravel | Package Version |
-| ------- | --------------- |
-| 10.0+   | ^1.0            |
-| 11.0+   | ^2.0            |
+- Filament: 4.0+
+- Laravel: 11.0+
 
 ### Installing with Composer
 
