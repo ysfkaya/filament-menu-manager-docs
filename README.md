@@ -2,6 +2,9 @@
 
 ![Menu Manager Page](https://raw.githubusercontent.com/ysfkaya/filament-menu-manager-docs/main/screenshots/plugin.png)
 
+> [!WARNING]  
+> This documantation is for version 3.x of Filament.
+
 ## Introduction
 
 The Menu Manager package is a paid package developed for Filament, helping you manage the menu space for your site as you wish. With the features this plugin offers, you can create a menu space in any location, add menu groups as you like, display your existing data in the menu, and you can do this either by drag and drop or using navigation buttons.
@@ -129,7 +132,7 @@ To install Menu Manager you'll need to add the package to your `composer.json` f
 Once the repository has been added to your composer.json file, you can install Menu Manager like any other composer package using the composer require command:
 
 ```bash
-composer require ysfkaya/filament-menu-manager
+composer require ysfkaya/filament-menu-manager:^2.0
 ```
 
 Next, you will be prompted to provide your username and password.
